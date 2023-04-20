@@ -1,5 +1,5 @@
 const sharp = require("sharp");
-const { GIFEncoder, quantize, applyPalette } = require("gifenc");
+const { GIFEncoder, quantize, applyPalette, dither } = require("gifenc");
 
 class GifReader {
   constructor(image) {
@@ -147,7 +147,8 @@ class Gif {
         format,
         ...gifEncoderQuantizeOptions,
       });
-      const index = applyPalette(data, palette, format);
+      // const index = applyPalette(data, palette, format);
+      const index = dither(data, width, height, palette);
       encoder.writeFrame(index, width, height, {
         transparent,
         delay: delay[i],
