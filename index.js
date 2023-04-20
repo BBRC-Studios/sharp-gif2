@@ -1,5 +1,10 @@
 const sharp = require("sharp");
-const { GIFEncoder, quantize, applyPalette, dither } = require("gifenc");
+const {
+  GIFEncoder,
+  quantize,
+  applyPalette,
+  dither,
+} = require("@bbrc-studios/gifenc");
 
 class GifReader {
   constructor(image) {
